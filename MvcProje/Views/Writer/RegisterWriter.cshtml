@@ -1,0 +1,56 @@
+﻿@model EntityLayer.Concrete.Writer
+
+@{
+    ViewBag.Title = "Yazar Kayıt Ol";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazar Kayıt Ol</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg" style="width: 400px;">
+            <div class="card-header text-center bg-primary text-white">
+                <h5 class="mb-0">Yazar Kayıt Ol</h5>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("RegisterWriter", "Writer", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label for="WriterName">Yazar Adı</label>
+                        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control", placeholder = "Yazar Adı" })
+                        @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="WriterSurName">Yazar Soyadı</label>
+                        @Html.TextBoxFor(x => x.WriterSurName, new { @class = "form-control", placeholder = "Yazar Soyadı" })
+                        @Html.ValidationMessageFor(x => x.WriterSurName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="WriterMail">E-Mail</label>
+                        @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control", placeholder = "E-Mail" })
+                        @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="WriterPassword">Şifre</label>
+                        @Html.PasswordFor(x => x.WriterPassword, new { @class = "form-control", placeholder = "Şifre" })
+                        @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Kayıt Ol</button>
+                }
+            </div>
+            <div class="card-footer text-center">
+                <small class="text-muted">Zaten bir hesabınız var mı? <a href="/Login/WriterLogin">Giriş Yap</a></small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
